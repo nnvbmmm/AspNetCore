@@ -1,4 +1,4 @@
-﻿// Copyright (c) .NET Foundation. All rights reserved.
+// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
@@ -38,10 +38,11 @@ namespace Templates.Test.Helpers
                     .Run(output, workingDirectory, DotNetMuxer.MuxerPathOrDefault(), $"publish -c Release")
                     .WaitForExit(assertSuccess: true);
                 workingDirectory = Path.Combine(workingDirectory, "bin", "Release", framework, "publish");
-                if (File.Exists(Path.Combine(workingDirectory, "ClientApp", "package.json")))
-                {
-                    Npm.RestoreWithRetry(output, Path.Combine(workingDirectory, "ClientApp"));
-                }
+                // Should install their own stuff
+                //if (File.Exists(Path.Combine(workingDirectory, "ClientApp", "package.json")))
+                //{
+                //    Npm.RestoreWithRetry(output, Path.Combine(workingDirectory, "ClientApp"));
+                //}
             }
             else
             {
